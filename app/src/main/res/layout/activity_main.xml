@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#242424" >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#242424"
+        android:layout_weight="0.5">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/title" />
+
+    </LinearLayout>
+
+
+    <TableLayout
+        android:id="@+id/TableLayout01"
+        android:stretchColumns="*"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="0.5"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="35dp"
+        >
+
+        <!--First Row -->
+        <TableRow
+            android:id="@+id/TableRow01"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:weightSum="3"
+            android:layout_weight="1"
+            >
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/play_button"
+                android:background="@null"
+                android:id="@+id/play_button"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/language_button"
+                android:background="@null"
+                android:id="@+id/language_button"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/settings_button"
+                android:background="@null"
+                android:id="@+id/settings_button"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true">
+
+            </ImageButton>
+
+        </TableRow>
+
+        <!--Second Row -->
+        <TableRow
+            android:id="@+id/TableRow02"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:weightSum="3"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/share_button"
+                android:background="@null"
+                android:id="@+id/share_button"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/statistics_button"
+                android:background="@null"
+                android:id="@+id/btnLevel13123"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/about_button"
+                android:background="@null"
+                android:id="@+id/about_button"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside">
+
+            </ImageButton>
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</LinearLayout>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="#242424">-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:id="@+id/taobao_login"-->
+        <!--android:layout_weight="0.5" >-->
+
+
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--style="@style/loginType"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_weight="0.5" >-->
+        <!--<LinearLayout-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/play_button"-->
+                <!--android:id="@+id/button_play"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:layout_weight="1"/>-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/language_button"-->
+                <!--android:id="@+id/button_language"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:layout_weight="1"/>-->
+
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="New Button"-->
+                <!--android:drawableTop="@drawable/ai"-->
+                <!--android:id="@+id/ayylmasdao"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_weight="1"/>-->
+
+
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/play_button"-->
+                <!--android:id="@+id/button_playd"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:layout_weight="1"/>-->
+
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="New Button"-->
+                <!--android:drawableTop="@drawable/ic_language_button"-->
+                <!--android:id="@+id/button3"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_weight="1"/>-->
+
+            <!--<Button-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="New Button"-->
+                <!--android:drawableTop="@drawable/ic_language_button"-->
+                <!--android:id="@+id/ayylmaosads"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_weight="1"/>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+    <!--<LinearLayout-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<Button-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="New Button"-->
+            <!--android:drawableTop="@drawable/ic_movie"-->
+            <!--android:id="@+id/button"-->
+            <!--android:gravity="center"-->
+            <!--android:background="#FF33B5E5"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<Button-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="New Button"-->
+            <!--android:drawableTop="@drawable/ic_movie"-->
+            <!--android:id="@+id/button1"-->
+
+            <!--android:gravity="center"-->
+            <!--android:background="#000000"-->
+            <!--android:layout_weight="1"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:orientation="horizontal">-->
+        <!--<Button-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="New Button"-->
+            <!--android:drawableTop="@drawable/ic_movie"-->
+            <!--android:id="@+id/button2"-->
+            <!--android:gravity="center"-->
+            <!--android:background="#123123"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<Button-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="New Button"-->
+            <!--android:drawableTop="@drawable/ic_movie"-->
+            <!--android:id="@+id/button3"-->
+            <!--android:gravity="center"-->
+            <!--android:background="#FF33B5E5"-->
+            <!--android:layout_weight="1"/>-->
+    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
+
+<!--<android.support.v7.widget.GridLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:grid="http://schemas.android.com/apk/res-auto"-->
+
+    <!--android:id="@+id/choice_grid"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="300dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--grid:alignmentMode="alignBounds"-->
+    <!--grid:columnCount="2"-->
+    <!--grid:rowOrderPreserved="false">-->
+
+    <!--<Button-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:text="New Button"-->
+        <!--android:drawableTop="@drawable/ic_movie"-->
+        <!--android:id="@+id/button"-->
+        <!--grid:layout_columnWeight="1"-->
+        <!--grid:layout_gravity="fill_horizontal"-->
+        <!--android:gravity="center"-->
+        <!--android:background="#FF33B5E5"/>-->
+
+    <!--<Button-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:text="New Button"-->
+        <!--grid:layout_columnWeight="1"-->
+        <!--grid:layout_gravity="fill_horizontal"-->
+        <!--android:gravity="center"-->
+        <!--android:background="#000000"/>-->
+
+    <!--<Button-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:text="New Button"-->
+        <!--grid:layout_columnWeight="1"-->
+        <!--grid:layout_gravity="fill_horizontal"-->
+        <!--android:gravity="center"-->
+        <!--android:background="#FFFFFF" />-->
+
+    <!--<Button-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:text="New Button"-->
+        <!--grid:layout_columnWeight="1"-->
+        <!--grid:layout_gravity="fill_horizontal"-->
+        <!--android:gravity="center"-->
+        <!--android:background="#FF33B5E5" />-->
+
+<!--</android.support.v7.widget.GridLayout>-->

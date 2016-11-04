@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dip"
+    android:background="#242424">
+
+    <ImageButton android:id="@+id/flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/stress_free_mode" />
+
+    <TextView
+        android:id="@+id/stress_free_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/stress_free_desc"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/confirm_message_size" />
+
+
+</LinearLayout>

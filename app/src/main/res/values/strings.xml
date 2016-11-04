@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Number Catch</string>
+    <string name="credits">&#169; 2016 Dadi Zhang \r\nMade with love in Waterloo and Ottawa</string>
+    <string name="icon_credits_string">Icon Credits</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello there!</string>
+    <string name="slide_1_desc">Are you learning a new language? If so, are you struggling with the numbers?</string>
+
+    <string name="slide_2_title">Numbers are \n challenging.</string>
+
+    <string name="slide_3_title">Don\'t panic!</string>
+
+    <string name="slide_4_title">Good luck!</string>
+    <string name="confirm_language">You have selected %1$s as your language of choice. Are you sure?</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="slide_3_desc">This app will make you an expert in recognizing numbers in the language you are learning!</string>
+    <string name="slide_2_desc">Phone numbers, dates, special cases...Big numbers are problematic even to native speakers.</string>
+    <string name="slide_4_desc">Start with the level you are most comfortable with and go from there. You got this!</string>
+
+    <string name="stress_free_desc">Just relax and listen to the numbers!</string>
+
+
+</resources>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#242424">
+
+    <!--First Row-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/loginType"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/TableRow01"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:weightSum="3"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/norwegian"
+                android:background="@null"
+                android:id="@+id/norwegian"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/danish"
+                android:background="@null"
+                android:id="@+id/play_button2"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/swedish"
+                android:background="@null"
+                android:id="@+id/play_button3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/TableRow02"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:weightSum="3"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chinese"
+                android:background="@null"
+                android:id="@+id/play_button321"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/japanese"
+                android:background="@null"
+                android:id="@+id/japanese"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/finnish"
+                android:background="@null"
+                android:id="@+id/play_button312"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/TableRow03"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:weightSum="3"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/english_uk"
+                android:background="@null"
+                android:id="@+id/english_uk"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/german"
+                android:background="@null"
+                android:id="@+id/play_button21231"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dutch"
+                android:background="@null"
+                android:id="@+id/play_button3123123"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/TableRow03"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:weightSum="3"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/english_us"
+                android:background="@null"
+                android:id="@+id/play_button12312132"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/french"
+                android:background="@null"
+                android:id="@+id/play_button212321421"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/russian"
+                android:background="@null"
+                android:id="@+id/play_button3121233123"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
