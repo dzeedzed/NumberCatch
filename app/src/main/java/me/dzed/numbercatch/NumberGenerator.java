@@ -5,8 +5,6 @@ package me.dzed.numbercatch;
  */
 public class NumberGenerator {
 
-
-
     public NumberGenerator() {
 
     }

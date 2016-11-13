@@ -6,17 +6,23 @@ import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Locale;
+import java.util.UUID;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,17 +36,25 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton share;
     private ImageButton statistics;
 
+    public static TextToSpeech textToSpeech;
+    public static boolean ready;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
+
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                Log.e("textToSpeech", "TextToSpeech.OnInitListener.onInit...");
+                setTextToSpeechLanguage();
+            }
+        });
 
         prefManager = new PrefManager(this);
         if (prefManager.isFirstTimeLaunch()) {
@@ -122,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void showAbout() {
         // Inflate the about message contents
         View messageView = getLayoutInflater().inflate(R.layout.about, null, false);
@@ -155,6 +170,46 @@ public class MainActivity extends AppCompatActivity {
         }
         temp.setText(resultHtml);
         temp.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private Locale getUserSelectedLanguage() {
+        return Locale.CANADA;
+    }
+
+    private void setTextToSpeechLanguage() {
+        Locale language = this.getUserSelectedLanguage();
+        if (language == null) {
+            this.ready = false;
+            Toast.makeText(this, "Not language selected", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int result = textToSpeech.setLanguage(language);
+        if (result == TextToSpeech.LANG_MISSING_DATA) {
+            this.ready = false;
+            Toast.makeText(this, "Missing language data", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            this.ready = false;
+            Toast.makeText(this, "Language not supported", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            this.ready = true;
+            Locale currentLanguage = textToSpeech.getVoice().getLocale();
+            Toast.makeText(this, "Language " + currentLanguage, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void speakOut(String toSpeak) {
+        if (!ready) {
+            Toast.makeText(this, "Text to Speech not ready", Toast.LENGTH_LONG).show();
+            return;
+        }
+        // Text to Speak
+        Toast.makeText(this, toSpeak, Toast.LENGTH_SHORT).show();
+
+        // A random String (Unique ID).
+        String utteranceId = UUID.randomUUID().toString();
+        textToSpeech.speak(toSpeak, TextToSpeech.QUEUE_ADD, null, utteranceId);
     }
 
 }

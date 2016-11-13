@@ -7,7 +7,7 @@
     android:padding="20dip"
     android:background="#242424">
 
-    <ImageButton android:id="@+id/flag"
+    <ImageButton android:id="@+id/stress_free_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
