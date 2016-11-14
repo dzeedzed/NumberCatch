@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Locale getUserSelectedLanguage() {
-        return Locale.CANADA;
+        return Locale.CHINA;
     }
 
     private void setTextToSpeechLanguage() {

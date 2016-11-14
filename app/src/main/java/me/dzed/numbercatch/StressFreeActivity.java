@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,13 +24,7 @@ public class StressFreeActivity extends Activity {
     private Button pause;
     private int delay = 4000; //milliseconds
     private Handler handler;
-    private Runnable runnable = new Runnable(){
-        public void run(){
-            //do something
-            speakOut("Hello world! Donald Trump is our glorious leader!");
-            handler.postDelayed(this, delay);
-        }
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +35,58 @@ public class StressFreeActivity extends Activity {
         textToSpeech = MainActivity.textToSpeech;
         ready = MainActivity.ready;
 
+        final Runnable ayylmao = new Runnable() {
+            @Override
+            public void run() {
+                speakOut("Dank memes cannot melt steel beams! Ayy");
+            }
+        };
+
+
+        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String s) {
+
+            }
+
+            @Override
+            public void onDone(String s) {
+                handler.postDelayed(ayylmao, delay);
+            }
+
+            @Override
+            public void onError(String s) {
+
+            }
+        });
+
+//        final Runnable runnable = new Runnable(){
+//            public void run(){
+//                // Generate numbers and speak them
+//                String utteranceID = speakOut("131");
+//                handler.postDelayed(this, delay);
+//            }
+//        };
+
+
+        // ayylmao = runnable
+
+
         button = (Button) findViewById(R.id.button1231312);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handler = new Handler();
-
-
-
-
-                handler.postDelayed(runnable, delay);
+                handler.postDelayed(ayylmao, delay);
+                // TIMER
+//                Handler timerHandler = new Handler();
+//                timerHandler.postDelayed(new Runnable() {
+//
+//                    public void run() {
+//                        handler.removeCallbacks(ayylmao);
+//                        textToSpeech.stop();
+//                    }
+//                }, 30000);
             }
         });
 
@@ -57,10 +94,8 @@ public class StressFreeActivity extends Activity {
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String utteranceId = UUID.randomUUID().toString();
-                textToSpeech.speak("", TextToSpeech.QUEUE_FLUSH, null, utteranceId);
-                handler.removeCallbacks(runnable);
-                textToSpeech.shutdown();
+                handler.removeCallbacks(ayylmao);
+                textToSpeech.stop();
             }
         });
         
@@ -155,6 +190,7 @@ public class StressFreeActivity extends Activity {
         // A random String (Unique ID).
         String utteranceId = UUID.randomUUID().toString();
         textToSpeech.speak(toSpeak, TextToSpeech.QUEUE_ADD, null, utteranceId);
+        return;
     }
 
     @Override
@@ -171,11 +207,11 @@ public class StressFreeActivity extends Activity {
         }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (textToSpeech != null) {
-            textToSpeech.shutdown();
-        }
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        if (textToSpeech != null) {
+//            textToSpeech.shutdown();
+//        }
+//    }
 }
