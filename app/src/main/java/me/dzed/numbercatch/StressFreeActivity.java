@@ -1,7 +1,7 @@
 package me.dzed.numbercatch;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
@@ -9,36 +9,49 @@ import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
 public class StressFreeActivity extends Activity {
 
+    public Context context;
+
     private NumberGenerator numberGenerator;
     private TextToSpeech textToSpeech;
-    private boolean ready;
+
+    private TextView type;
     private Button button;
     private Button pause;
     private int delay = 4000; //milliseconds
     private Handler handler;
-
+    private boolean ready;
+    private boolean timerSet = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stress_free);
 
+        context = getApplicationContext();
+
         numberGenerator = new NumberGenerator();
         textToSpeech = MainActivity.textToSpeech;
         ready = MainActivity.ready;
 
+        type = (TextView) findViewById(R.id.stress_free_type);
+        Util.setTextViewFont(context, type, Constants.FONT_PATH_LATO_THIN);
+
         final Runnable ayylmao = new Runnable() {
             @Override
             public void run() {
-                speakOut("Dank memes cannot melt steel beams! Ayy");
+                Random rand = new Random();
+                int ayy = rand.nextInt(100);
+                speakOut(Integer.toString(ayy));
             }
         };
 
@@ -59,18 +72,6 @@ public class StressFreeActivity extends Activity {
 
             }
         });
-
-//        final Runnable runnable = new Runnable(){
-//            public void run(){
-//                // Generate numbers and speak them
-//                String utteranceID = speakOut("131");
-//                handler.postDelayed(this, delay);
-//            }
-//        };
-
-
-        // ayylmao = runnable
-
 
         button = (Button) findViewById(R.id.button1231312);
         button.setOnClickListener(new View.OnClickListener() {
@@ -111,46 +112,6 @@ public class StressFreeActivity extends Activity {
             }
         }
     }
-
-//    private void startSpeak(final String data, final float rate) {
-//
-//        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-//            @Override
-//            public void onInit(int initStatus) {
-//
-//                if (initStatus == TextToSpeech.SUCCESS) {
-//                    int result = textToSpeech.setLanguage(Locale.ENGLISH);
-//                    if(textToSpeech.isLanguageAvailable(Locale.US)==TextToSpeech.LANG_AVAILABLE) {
-//                        textToSpeech.setLanguage(Locale.US);
-//                    }
-//
-//                    textToSpeech.setPitch(1.3f);
-//                    textToSpeech.setSpeechRate(rate);
-//
-//
-//
-//                    // start speaking
-//                    synchronized (this) {
-////                        textToSpeech.speak(data, TextToSpeech.QUEUE_FLUSH, null);
-//                        if (result == TextToSpeech.LANG_MISSING_DATA
-//                                || result == TextToSpeech.LANG_NOT_SUPPORTED)
-//                        {
-//                            Toast.makeText(getApplicationContext(),
-//                                    "Please Set your Language to English US.", Toast.LENGTH_LONG ).show();
-//                        }
-//                        else
-//                        {
-//                            textToSpeech.setLanguage(Locale.ENGLISH);
-//                            textToSpeech.speak(data, TextToSpeech.QUEUE_ADD, null, "A");
-//                        }
-//                    }
-//                }
-//                else if (initStatus == TextToSpeech.ERROR) {
-//                    Toast.makeText(getApplicationContext(), "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-//    }
 
     private Locale getUserSelectedLanguage() {
         return Locale.CANADA;
