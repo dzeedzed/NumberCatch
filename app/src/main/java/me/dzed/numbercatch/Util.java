@@ -5,8 +5,6 @@ import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.widget.TextView;
 
-import java.util.Locale;
-
 /**
  * Created by dzed on 19/11/16.
  */

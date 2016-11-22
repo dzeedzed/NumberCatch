@@ -2,6 +2,7 @@ package me.dzed.numbercatch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -28,6 +29,7 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     private PrefManager prefManager;
+    private SharedPreferences pref;
     private Button button;
     private ImageButton play;
     private ImageButton about;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton selectLanguage;
     private ImageButton share;
     private ImageButton statistics;
+    private Locale languageLocale = new Locale("en_US");
 
     public static TextToSpeech textToSpeech;
     public static boolean ready;
@@ -48,21 +51,31 @@ public class MainActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                Log.e("textToSpeech", "TextToSpeech.OnInitListener.onInit...");
-                setTextToSpeechLanguage();
-            }
-        });
-
+        // Initialize Preference Manager to retrieve stored data
         prefManager = new PrefManager(this);
-        if (prefManager.isFirstTimeLaunch()) {
+
+        // Launch slides if it's the user is using this app for the first time
+        if (prefManager.getIsFirstTimeLaunch()) {
             prefManager.setFirstTimeLaunch(false);
             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             startActivity(intent);
             overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
         }
+
+        // Set user language locale, default is American English
+        final String languageLocaleStr = prefManager.getLanguageLocale();
+        languageLocale = new Locale(languageLocaleStr);
+
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                Log.e("textToSpeech", "TextToSpeech.OnInitListener.onInit...");
+                setTextToSpeechLanguage(languageLocale);
+            }
+        });
+
+
+
 
         setContentView(R.layout.activity_main);
 
@@ -172,30 +185,27 @@ public class MainActivity extends AppCompatActivity {
         temp.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    private Locale getUserSelectedLanguage() {
-        return Locale.CHINA;
-    }
+    private void setTextToSpeechLanguage(Locale language) {
 
-    private void setTextToSpeechLanguage() {
-        Locale language = this.getUserSelectedLanguage();
+        System.out.println(language);
+
         if (language == null) {
-            this.ready = false;
-            Toast.makeText(this, "Not language selected", Toast.LENGTH_SHORT).show();
+            ready = false;
+            Toast.makeText(this, "No language selected", Toast.LENGTH_SHORT).show();
             return;
         }
         int result = textToSpeech.setLanguage(language);
         if (result == TextToSpeech.LANG_MISSING_DATA) {
-            this.ready = false;
+            ready = false;
             Toast.makeText(this, "Missing language data", Toast.LENGTH_SHORT).show();
             return;
         } else if (result == TextToSpeech.LANG_NOT_SUPPORTED) {
-            this.ready = false;
+            ready = false;
             Toast.makeText(this, "Language not supported", Toast.LENGTH_SHORT).show();
             return;
         } else {
-            this.ready = true;
-            Locale currentLanguage = textToSpeech.getVoice().getLocale();
-            Toast.makeText(this, "Language " + currentLanguage, Toast.LENGTH_SHORT).show();
+            ready = true;
+            Toast.makeText(this, "Language " + language, Toast.LENGTH_SHORT).show();
         }
     }
 

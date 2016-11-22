@@ -128,11 +128,9 @@ public class StressFreeActivity extends Activity {
         if (result == TextToSpeech.LANG_MISSING_DATA) {
             this.ready = false;
             Toast.makeText(this, "Missing language data", Toast.LENGTH_SHORT).show();
-            return;
         } else if (result == TextToSpeech.LANG_NOT_SUPPORTED) {
             this.ready = false;
             Toast.makeText(this, "Language not supported", Toast.LENGTH_SHORT).show();
-            return;
         } else {
             this.ready = true;
             Locale currentLanguage = textToSpeech.getVoice().getLocale();
@@ -151,13 +149,18 @@ public class StressFreeActivity extends Activity {
         // A random String (Unique ID).
         String utteranceId = UUID.randomUUID().toString();
         textToSpeech.speak(toSpeak, TextToSpeech.QUEUE_ADD, null, utteranceId);
-        return;
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if (handler == null) {
+            return;
+        }
+        handler.removeCallbacksAndMessages(null);
+        textToSpeech.stop();
         overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
+        finish();
     }
 
     @Override

@@ -18,6 +18,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
     private ImageButton norwegian;
     private ImageButton danish;
     private ImageButton swedish;
+    private ImageButton finnish;
     private ImageButton japanese;
     private Context context;
 
@@ -34,78 +35,53 @@ public class LanguageSelectActivity extends AppCompatActivity {
         }
 
         context = getApplicationContext();
-        norwegian = (ImageButton) findViewById(R.id.norwegian);
 
-
-        norwegian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(LanguageSelectActivity.this,  PromptLanguageActivity.class);
-
-                Bundle b = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-                    bitmap.eraseColor(Color.parseColor("#242424"));
-                    b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
-                }
-                i.putExtra("imageID", R.id.norwegian);
-                startActivity(i, b);
-
-            }
-        });
-
-        english_uk = (ImageButton) findViewById(R.id.english_uk);
-        english_uk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent settingsIntent = new Intent(LanguageSelectActivity.this, PromptLanguageActivity.class);
-//                startActivity(settingsIntent);
-//                overridePendingTransition(R.transition.ayylmao, R.transition.feridun);
-                Intent i = new Intent(LanguageSelectActivity.this,  PromptLanguageActivity.class);
-
-                Bundle b = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    //b = ActivityOptions.makeScaleUpAnimation(view, 0, 0, view.getWidth(),
-                    //                                         view.getHeight()).toBundle();
-                    Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-                    bitmap.eraseColor(Color.parseColor("#242424"));
-
-                    b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
-                }
-                startActivity(i, b);
-            }
-        });
-
-        japanese = (ImageButton) findViewById(R.id.japanese);
-        japanese.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent settingsIntent = new Intent(LanguageSelectActivity.this, PromptLanguageActivity.class);
-//                startActivity(settingsIntent);
-//                overridePendingTransition(R.transition.ayylmao, R.transition.feridun);
-                Intent i = new Intent(LanguageSelectActivity.this,  PromptLanguageActivity.class);
-
-                Bundle b = null;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    //b = ActivityOptions.makeScaleUpAnimation(view, 0, 0, view.getWidth(),
-                    //                                         view.getHeight()).toBundle();
-                    Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-                    bitmap.eraseColor(Color.parseColor("#242424"));
-
-                    b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
-                }
-                i.putExtra("imageID", R.drawable.japanese);
-                i.putExtra("languageName", "Japanese");
-                startActivity(i, b);
-            }
-        });
+        norwegian = initLanguageButton(R.id.norwegian, R.drawable.norwegian,
+                Constants.NORWEGIAN_NAME, Constants.NORWEGIAN_LOCALE);
+        danish = initLanguageButton(R.id.danish, R.drawable.danish,
+                Constants.DANISH_NAME, Constants.DANISH_LOCALE);
+        swedish = initLanguageButton(R.id.swedish, R.drawable.swedish,
+                Constants.SWEDISH_NAME, Constants.SWEDISH_LOCALE);
+        english_uk = initLanguageButton(R.id.english_uk, R.drawable.english_uk,
+                Constants.ENGLISH_UK_NAME, Constants.ENGLISH_UK_LOCALE);
+        japanese = initLanguageButton(R.id.japanese, R.drawable.japanese,
+                Constants.JAPANESE_NAME, Constants.JAPANESE_LOCALE);
+        finnish = initLanguageButton(R.id.finnish, R.drawable.finnish,
+                Constants.FINNISH_NAME, Constants.FINNISH_LOCALE);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
+    }
+
+    public ImageButton initLanguageButton(int buttonID, final int imageID, final String languageName,
+                                          final String languageLocale) {
+        ImageButton result = (ImageButton) findViewById(buttonID);
+        result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LanguageSelectActivity.this, PromptLanguageActivity.class);
+                Bundle b = null;
+
+                // Zoom in animation when clicked
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
+                            Bitmap.Config.ARGB_8888);
+                    bitmap.eraseColor(Color.parseColor(Constants.COLOR_HEX_GREY));
+                    b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
+                }
+
+                // Send image, name, and locale data to PromptLanguageActivity
+                i.putExtra(Constants.IMAGE_ID_STRING, imageID);
+                i.putExtra(Constants.LANGUAGE_NAME, languageName);
+                i.putExtra(Constants.LANGUAGE_LOCALE, languageLocale);
+                startActivity(i, b);
+            }
+        });
+
+        return result;
     }
 
 }

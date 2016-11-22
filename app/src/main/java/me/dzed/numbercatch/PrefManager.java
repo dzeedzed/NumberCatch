@@ -18,6 +18,7 @@ public class PrefManager {
     private static final String PREF_NAME = "numbercatch-welcome";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    private static final String LANGUAGE_LOCALE = "LanguageLocale";
 
     public PrefManager(Context context) {
         this._context = context;
@@ -30,8 +31,19 @@ public class PrefManager {
         editor.commit();
     }
 
-    public boolean isFirstTimeLaunch() {
+    public boolean getIsFirstTimeLaunch() {
         return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
+
+    public void setLanguageLocale(String languageLocale) {
+        editor.putString(LANGUAGE_LOCALE, languageLocale);
+        editor.commit();
+    }
+
+    public String getLanguageLocale() {
+        return pref.getString(LANGUAGE_LOCALE, "en_US");
+    }
+
+
 
 }
