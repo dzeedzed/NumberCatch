@@ -27,7 +27,7 @@ public class StressFreeActivity extends Activity {
     private TextView type;
     private Button button;
     private Button pause;
-    private int delay = 4000; //milliseconds
+    private int delay = 4000; // milliseconds
     private Handler handler;
     private boolean ready;
     private boolean timerSet = false;
@@ -54,7 +54,6 @@ public class StressFreeActivity extends Activity {
                 speakOut(Integer.toString(ayy));
             }
         };
-
 
         textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
             @Override

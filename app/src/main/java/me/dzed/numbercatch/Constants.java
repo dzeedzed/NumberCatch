@@ -37,6 +37,16 @@ public final class Constants {
     public static final String FINNISH_LOCALE = "fi_FI";
     public static final String SWEDISH_NAME = "Swedish";
     public static final String SWEDISH_LOCALE = "sv_SE";
+    public static final String FRENCH_NAME = "French";
+    public static final String FRENCH_LOCALE = "fr_FR";
+    public static final String CHINESE_NAME = "Chinese (Mandarin)";
+    public static final String CHINESE_LOCALE = "zh_CN";
+    public static final String DUTCH_NAME = "Dutch";
+    public static final String DUTCH_LOCALE = "nl_NL";
+    public static final String RUSSIAN_NAME = "Russian";
+    public static final String RUSSIAN_LOCALE = "ru_RU";
+    public static final String GERMAN_NAME = "German";
+    public static final String GERMAN_LOCALE = "de_DE";
     public static final String CZECH_NAME = "Czech";
     public static final String CZECH_LOCALE = "cs_CZ";
 }

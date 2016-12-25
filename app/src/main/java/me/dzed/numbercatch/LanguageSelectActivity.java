@@ -20,6 +20,11 @@ public class LanguageSelectActivity extends AppCompatActivity {
     private ImageButton swedish;
     private ImageButton finnish;
     private ImageButton japanese;
+    private ImageButton french;
+    private ImageButton chinese;
+    private ImageButton dutch;
+    private ImageButton russian;
+    private ImageButton german;
     private Context context;
 
 
@@ -44,10 +49,22 @@ public class LanguageSelectActivity extends AppCompatActivity {
                 Constants.SWEDISH_NAME, Constants.SWEDISH_LOCALE);
         english_uk = initLanguageButton(R.id.english_uk, R.drawable.english_uk,
                 Constants.ENGLISH_UK_NAME, Constants.ENGLISH_UK_LOCALE);
+        english_us = initLanguageButton(R.id.english_us, R.drawable.english_us,
+                Constants.ENGLISH_US_NAME, Constants.ENGLISH_US_LOCALE);
         japanese = initLanguageButton(R.id.japanese, R.drawable.japanese,
                 Constants.JAPANESE_NAME, Constants.JAPANESE_LOCALE);
         finnish = initLanguageButton(R.id.finnish, R.drawable.finnish,
                 Constants.FINNISH_NAME, Constants.FINNISH_LOCALE);
+        french = initLanguageButton(R.id.french, R.drawable.french,
+                Constants.FRENCH_NAME, Constants.FRENCH_LOCALE);
+        chinese = initLanguageButton(R.id.chinese, R.drawable.chinese,
+                Constants.CHINESE_NAME, Constants.CHINESE_LOCALE);
+        dutch = initLanguageButton(R.id.dutch, R.drawable.dutch,
+                Constants.DUTCH_NAME, Constants.DUTCH_LOCALE);
+        russian = initLanguageButton(R.id.russian, R.drawable.russian,
+                Constants.RUSSIAN_NAME, Constants.RUSSIAN_LOCALE);
+        german = initLanguageButton(R.id.german, R.drawable.german,
+                Constants.GERMAN_NAME, Constants.GERMAN_LOCALE);
     }
 
     @Override
@@ -62,26 +79,25 @@ public class LanguageSelectActivity extends AppCompatActivity {
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LanguageSelectActivity.this, PromptLanguageActivity.class);
-                Bundle b = null;
+            Intent i = new Intent(LanguageSelectActivity.this, PromptLanguageActivity.class);
+            Bundle b = null;
 
-                // Zoom in animation when clicked
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
-                            Bitmap.Config.ARGB_8888);
-                    bitmap.eraseColor(Color.parseColor(Constants.COLOR_HEX_GREY));
-                    b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
-                }
+            // Zoom in animation when clicked
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),
+                        Bitmap.Config.ARGB_8888);
+                bitmap.eraseColor(Color.parseColor(Constants.COLOR_HEX_GREY));
+                b = ActivityOptions.makeThumbnailScaleUpAnimation(view, bitmap, 0, 0).toBundle();
+            }
 
-                // Send image, name, and locale data to PromptLanguageActivity
-                i.putExtra(Constants.IMAGE_ID_STRING, imageID);
-                i.putExtra(Constants.LANGUAGE_NAME, languageName);
-                i.putExtra(Constants.LANGUAGE_LOCALE, languageLocale);
-                startActivity(i, b);
+            // Send image, name, and locale data to PromptLanguageActivity
+            i.putExtra(Constants.IMAGE_ID_STRING, imageID);
+            i.putExtra(Constants.LANGUAGE_NAME, languageName);
+            i.putExtra(Constants.LANGUAGE_LOCALE, languageLocale);
+            startActivity(i, b);
             }
         });
 
         return result;
     }
-
 }
