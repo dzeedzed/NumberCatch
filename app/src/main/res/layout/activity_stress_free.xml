@@ -25,11 +25,33 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/confirm_message_size" />
 
+    <EditText
+        android:id="@+id/delayInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.0"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/include"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/confirm_message_size" />
+
+    <EditText
+        android:id="@+id/timerInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30.0"
+        android:inputType="numberDecimal" />
+
     <Button
         android:id="@+id/button1231312"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button" />
+        android:text="Start" />
 
     <Button
         android:id="@+id/pause"

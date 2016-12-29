@@ -9,6 +9,7 @@ import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +26,16 @@ public class StressFreeActivity extends Activity {
     private TextToSpeech textToSpeech;
 
     private TextView type;
+    private EditText delayInput;
+    private EditText timerInput;
     private Button button;
     private Button pause;
-    private int delay = 4000; // milliseconds
+    private long delay = 4000; // milliseconds
     private Handler handler;
     private boolean ready;
-    private boolean timerSet = false;
+
+    private long timer = 30000; // milliseconds
+    private boolean timerSet = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,14 @@ public class StressFreeActivity extends Activity {
         type = (TextView) findViewById(R.id.stress_free_type);
         Util.setTextViewFont(context, type, Constants.FONT_PATH_LATO_THIN);
 
+
+        delayInput = (EditText) findViewById(R.id.delayInput);
+
+
+
+
+
+
         final Runnable ayylmao = new Runnable() {
             @Override
             public void run() {
@@ -55,38 +68,53 @@ public class StressFreeActivity extends Activity {
             }
         };
 
-        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-            @Override
-            public void onStart(String s) {
 
-            }
-
-            @Override
-            public void onDone(String s) {
-                handler.postDelayed(ayylmao, delay);
-            }
-
-            @Override
-            public void onError(String s) {
-
-            }
-        });
 
         button = (Button) findViewById(R.id.button1231312);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Retrieve all numbers/attributes
+                double delayDouble = Double.parseDouble(delayInput.getText().toString()) * (double) 1000.0;
+                delay = (long) delayDouble;
+                System.out.println("FERIDUN " + delay);
+
+                textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                    @Override
+                    public void onStart(String s) {
+
+                    }
+
+                    @Override
+                    public void onDone(String s) {
+                        handler.postDelayed(ayylmao, delay);
+                    }
+
+                    @Override
+                    public void onError(String s) {
+
+                    }
+                });
+
                 handler = new Handler();
                 handler.postDelayed(ayylmao, delay);
-                // TIMER
-//                Handler timerHandler = new Handler();
-//                timerHandler.postDelayed(new Runnable() {
-//
-//                    public void run() {
-//                        handler.removeCallbacks(ayylmao);
-//                        textToSpeech.stop();
-//                    }
-//                }, 30000);
+
+                if (timerSet) {
+                    // TIMER
+                    timerInput = (EditText) findViewById(R.id.timerInput);
+                    double timerDouble = Double.parseDouble(timerInput.getText().toString()) * (double) 1000.0;
+                    timer = (long) timerDouble;
+
+                    Handler timerHandler = new Handler();
+                    timerHandler.postDelayed(new Runnable() {
+
+                        public void run() {
+                            handler.removeCallbacks(ayylmao);
+                            textToSpeech.stop();
+                        }
+                    }, timer);
+                }
             }
         });
 
