@@ -3,12 +3,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#242424"
     android:orientation="vertical"
-    android:layout_gravity="center_horizontal"
-    android:padding="20dip"
-    android:background="#242424">
+    android:padding="20dip">
 
-    <ImageButton android:id="@+id/practice_button"
+    <ImageView
+        android:id="@+id/practice_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -16,33 +16,39 @@
         android:scaleType="fitCenter"
         android:src="@drawable/practice" />
 
-    <TextView
-        android:id="@+id/practice_desc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/practice_desc"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/confirm_message_size" />
-
-    <ImageButton android:id="@+id/stress_free_button"
+    <EditText
+        android:id="@+id/delayInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dip"
-        android:adjustViewBounds="true"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/stress_free_mode" />
+        android:text="4.0"
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/stress_free_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/stress_free_desc"
         android:gravity="center_horizontal"
+        android:text="@string/include"
         android:textColor="@android:color/white"
         android:textSize="@dimen/confirm_message_size" />
 
+    <EditText
+        android:id="@+id/timerInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30.0"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/button1231312"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start" />
+
+    <Button
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pause" />
 
 
 

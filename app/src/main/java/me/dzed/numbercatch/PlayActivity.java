@@ -14,7 +14,9 @@ import java.util.Locale;
 public class PlayActivity extends Activity {
 
     private ImageButton stressFree;
+    private ImageButton practice;
     private TextView stressFreeDesc;
+    private TextView practiceDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +33,20 @@ public class PlayActivity extends Activity {
             }
         });
 
+        practice = (ImageButton) findViewById(R.id.practice_button);
+        practice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent aboutIntent = new Intent(PlayActivity.this, PracticeActivity.class);
+                startActivity(aboutIntent);
+                overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
+            }
+        });
+
         stressFreeDesc = (TextView) findViewById(R.id.stress_free_desc);
-        AssetManager am = getApplicationContext().getAssets();
-
-        Typeface typeface = Typeface.createFromAsset(am,
-                String.format(Locale.US, "fonts/%s", "Lato-Thin.ttf"));
-
-        stressFreeDesc.setTypeface(typeface);
+        practiceDesc = (TextView) findViewById(R.id.practice_desc);
+        Util.setTextViewFont(getApplicationContext(), stressFreeDesc, Constants.FONT_PATH_LATO_THIN);
+        Util.setTextViewFont(getApplicationContext(), practiceDesc, Constants.FONT_PATH_LATO_THIN);
     }
 
     @Override

@@ -14,6 +14,7 @@ public final class Constants {
 
     // Font paths
     public static final String FONT_PATH_LATO_THIN = "fonts/lato/Lato-Thin.ttf";
+    public static final String FONT_PATH_JOSEFIN_REGULAR = "fonts/josefin/JosefinSans-Regular.ttf";
 
     // Bundle data
     public static final String IMAGE_ID_STRING = "imageID";
