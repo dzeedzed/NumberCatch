@@ -27,6 +27,9 @@
     <string name="practice_desc">Practice makes perfect.</string>
     <string name="include">Include</string>
 
+    <string name="score">%1$d&#47;%2$d</string>
+    <string name="answer">Your answer will show up here.</string>
+    <string name="solution">Answer: %1$s</string>
 
     <string name="brightness">Screen Brightness</string>
 

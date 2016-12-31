@@ -59,34 +59,34 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:id="@+id/score"
+                android:id="@+id/scoreView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0/0"
+                android:text="@string/score"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/confirm_message_size" />
         </TableRow>
 
 
         <TextView
-            android:id="@+id/answer"
+            android:id="@+id/answerView"
             android:layout_marginBottom="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="FERIDUN"
+            android:text="@string/answer"
             android:textColor="@android:color/white"
             android:textSize="@dimen/confirm_message_size" />
 
         <TextView
-            android:id="@+id/solution"
+            android:id="@+id/solutionView"
             android:layout_marginBottom="20dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Answer: "
+            android:text="@string/solution"
             android:textColor="@android:color/white"
             android:textSize="@dimen/confirm_message_size" />
 

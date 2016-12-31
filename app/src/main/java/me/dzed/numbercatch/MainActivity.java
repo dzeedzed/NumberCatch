@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Locale languageLocale = new Locale("en_US");
 
     public static TextToSpeech textToSpeech;
+    public static MyTextToSpeech myTextToSpeech;
     public static boolean ready;
 
     @Override
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 setTextToSpeechLanguage(languageLocale);
             }
         });
+
+        myTextToSpeech = new MyTextToSpeech(getApplicationContext(), languageLocale);
 
 
 
